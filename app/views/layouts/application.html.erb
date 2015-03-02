@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<%= link_to "Home", root_path %>
+<a href="<%= things_path %>">See things</a>
+<a href="<%= new_board_path %>">Add a new board</a>
+<%= link_to "View Boards", boards_path %>
+
 <%= yield %>
 
 </body>

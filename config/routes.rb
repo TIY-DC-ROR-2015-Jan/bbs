@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   get '/better_things' => 'application#things', as: 'things'
 
-  get '/new_board' => 'boards#new', as: 'new_board'
+  get  '/new_board' => 'boards#new', as: 'new_board'
   post '/boards' => 'boards#create', as: 'boards'
-  get '/boards/:id' => 'boards#show', as: 'board'
+  get  '/boards' => 'boards#index'
+  get  '/boards/:id' => 'boards#show', as: 'board'
 end
