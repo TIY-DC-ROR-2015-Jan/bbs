@@ -1,10 +1,18 @@
 class BoardsController < ApplicationController
   def new
+    @board = Board.new
   end
 
   def create
-    board = Board.create! title: params[:title], subtitle: params[:subtitle]
-    redirect_to board_path(board) # "/boards/#{board.id}"
+    board_params = params[:board]
+    @board = Board.new title: board_params[:title], subtitle: board_params[:subtitle]
+    # @board = Board.new params[:board] <- need "Strong params"
+    if @board.save
+      redirect_to board_path(@board) # "/boards/#{board.id}"
+    else
+      # Do stuff
+      render :new
+    end
   end
 
   def show

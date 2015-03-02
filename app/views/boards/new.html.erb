@@ -1,7 +1,22 @@
 <h1>Add a New Board</h1>
 
+<% if @board.errors.any? %>
+  <ul>
+    <% @board.errors.full_messages.each do |err| %>
+      <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<!--
 <form action="<%= boards_path %>" method="POST">
   <input name="title" placeholder="Title">
   <input name="subtitle" placeholder="Subtitle">
   <button>Save</button>
 </form>
+-->
+<%= form_for @board do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :subtitle %>
+  <button>Submit</button>
+<% end %>
