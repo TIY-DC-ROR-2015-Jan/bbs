@@ -15,6 +15,19 @@ class BoardsController < ApplicationController
     end
   end
 
+  def edit
+    @board = Board.find params[:id]
+  end
+
+  def update
+    @board = Board.find params[:id]
+    if @board.update subtitle: params[:board][:subtitle]
+      redirect_to board_path(@board)
+    else
+      render :edit
+    end
+  end
+
   def show
     @board = Board.find params[:id]
   end

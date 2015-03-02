@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   post '/boards' => 'boards#create', as: 'boards'
   get  '/boards' => 'boards#index'
   get  '/boards/:id' => 'boards#show', as: 'board'
+  get  '/boards/:id/edit' => 'boards#edit', as: 'edit_board'
+  patch '/boards/:id' => 'boards#update'
 end

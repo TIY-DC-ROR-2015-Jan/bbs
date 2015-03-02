@@ -1,0 +1,14 @@
+<h1>Editing '<%= @board.title %>'</h1>
+
+<% if @board.errors.any? %>
+  <ul>
+    <% @board.errors.full_messages.each do |err| %>
+      <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @board do |f| %>
+  <%= f.text_field :subtitle %>
+  <button>Submit</button>
+<% end %>
