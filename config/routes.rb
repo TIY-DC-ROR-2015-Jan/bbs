@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   # get  '/boards/:id' => 'boards#show', as: 'board'
   # get  '/boards/:id/edit' => 'boards#edit', as: 'edit_board'
   # patch '/boards/:id' => 'boards#update'
+
+  get '/new_post' => 'posts#new', as: 'new_post'
+  post '/posts' => 'posts#create', as: 'posts'
 end
