@@ -6,5 +6,5 @@ class Post < ActiveRecord::Base
   validates :board, presence: true
 
   validates :title, length: { minimum: 6 }
-  validates :body, length: { minimum: 64 }
+  validates :body, length: { minimum: 8 }
 end
