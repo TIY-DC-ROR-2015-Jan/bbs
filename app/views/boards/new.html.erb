@@ -1,12 +1,6 @@
 <h1>Add a New Board</h1>
 
-<% if @board.errors.any? %>
-  <ul>
-    <% @board.errors.full_messages.each do |err| %>
-      <li><%= err %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render partial: 'partials/form_errors', locals: { object: @board } %>
 
 <!--
 <form action="<%= boards_path %>" method="POST">
