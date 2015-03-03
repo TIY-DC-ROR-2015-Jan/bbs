@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   # name_of_controller#action_on_controller
   root 'application#home'
 

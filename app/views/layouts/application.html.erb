@@ -12,6 +12,14 @@
 <a href="<%= things_path %>">See things</a>
 <a href="<%= new_board_path %>">Add a new board</a>
 <%= link_to "View Boards", boards_path %>
+|
+<% if current_user %>
+  <span><%= current_user.email %></span>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+  <!-- <%= button_to "Sign Out", destroy_user_session_path, method: :delete %> -->
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+<% end %>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
