@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: [:show]
+  #before_action :authenticate_user!, except: [:show]
+  #before_action :authenticate_user, only: [:new, :create, :edit, :update]
   before_action :set_board
 
   def new
@@ -27,8 +29,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = @board.posts.find params[:id]
-    if @post.update params.require(:post).permit(:body)
+    @post = current_user.posts.find params[:id] # What about @board?
+    if @post.update params.require(:post).permit(:title, :body)
       flash[:notice] = "Post updated!"
       redirect_to post_path(@board, @post)
     else

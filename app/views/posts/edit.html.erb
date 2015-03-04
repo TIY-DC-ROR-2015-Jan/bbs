@@ -1,6 +1,6 @@
 <%= render partial: 'partials/form_errors', locals: { object: @post } %>
 
-<%= form_for @post, url: edit_post_path(@board, @post) do |f| %>
+<%= form_for @post, url: post_path(@board, @post) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
