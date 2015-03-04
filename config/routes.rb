@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   # get  '/boards/:id/edit' => 'boards#edit', as: 'edit_board'
   # patch '/boards/:id' => 'boards#update'
 
-  get '/boards/:board_id/new_post' => 'posts#new', as: 'new_post'
-  post '/boards/:board_id/posts' => 'posts#create', as: 'posts'
-  # get '/posts/:id' ?
-  get '/boards/:board_id/posts/:id' => 'posts#show', as: 'post'
+  get   '/boards/:board_id/posts/new'      => 'posts#new',    as: 'new_post'
+  post  '/boards/:board_id/posts'          => 'posts#create', as: 'posts'
+  get   '/boards/:board_id/posts/:id/edit' => 'posts#edit',   as: 'edit_post'
+  get   '/boards/:board_id/posts/:id'      => 'posts#show',   as: 'post'
+  patch '/boards/:board_id/posts/:id'      => 'posts#update'
 end
