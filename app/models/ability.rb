@@ -13,8 +13,12 @@ class Ability
 
     # can :delete, Board, user_id: :id
     can :delete, Board do |board|
-      board.user_id == user.id
+      board.user_id == user.id # || board.moderators.include? ...
     end
+
+    #user.moderated_boards.each do |b|
+    #  can :delete, b
+    #end
 
     can :delete, Board do |board|
       board.moderators.include? user
