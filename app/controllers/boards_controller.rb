@@ -1,11 +1,14 @@
 class BoardsController < ApplicationController
   def new
     @board = Board.new
+    authorize! :create, @board
   end
 
   def create
     board_params = params[:board]
     @board = Board.new title: board_params[:title], subtitle: board_params[:subtitle]
+    @board.user = current_user
+    authorize! :create, @board
     # @board = Board.new params[:board] <- need "Strong params"
     if @board.save
       redirect_to board_path(@board) # "/boards/#{board.id}"
@@ -30,9 +33,18 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find params[:id]
+    authorize! :read, @board
   end
 
   def index
+    authorize! :read, Board
     @boards = Board.all
+  end
+
+  def destroy
+    @board = Board.find params[:id]
+    authorize! :delete, @board
+    @board.destroy
+    redirect_to boards_path
   end
 end
